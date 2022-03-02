@@ -27,3 +27,5 @@ jobs:
       - name: pbi-tools deploy
         run: |
           /app/pbi-tools/pbi-tools.core deploy . "Deploy from PBIX files" -whatIf
+        env:
+          PBI_CLIENT_SECRET: ${{ secrets.PBI_CLIENT_SECRET }}
