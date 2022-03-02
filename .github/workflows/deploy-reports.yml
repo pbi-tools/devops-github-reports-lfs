@@ -9,13 +9,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  deployment:
+  Deployment:
     runs-on: ubuntu-latest
-    
+    environment: Development
     container:
       image: ghcr.io/mthierba/pbi-tools-core:1.0.0-beta.9_220221
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
@@ -24,8 +23,14 @@ jobs:
         run: |
           /app/pbi-tools/pbi-tools.core info
 
-      - name: pbi-tools deploy
+      - name: pbi-tools deploy (WhatIf)
         run: |
           /app/pbi-tools/pbi-tools.core deploy . "Deploy from PBIX files" -whatIf
+        env:
+          PBI_CLIENT_SECRET: ${{ secrets.PBI_CLIENT_SECRET }}
+
+      - name: pbi-tools deploy
+        run: |
+          /app/pbi-tools/pbi-tools.core deploy . "Deploy from PBIX files"
         env:
           PBI_CLIENT_SECRET: ${{ secrets.PBI_CLIENT_SECRET }}
