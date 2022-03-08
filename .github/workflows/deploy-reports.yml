@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: Development
     container:
-      image: ghcr.io/mthierba/pbi-tools-core:1.0.0-beta.9_220221
+      image: ghcr.io/pbi-tools/pbi-tools-core:latest
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
