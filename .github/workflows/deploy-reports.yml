@@ -11,7 +11,7 @@ on:
 jobs:
   Deployment:
     runs-on: ubuntu-latest
-    environment: Development
+    environment: Staging
     container:
       image: ghcr.io/pbi-tools/pbi-tools-core:latest
 
